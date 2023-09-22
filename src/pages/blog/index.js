@@ -10,7 +10,7 @@ export default function Blog() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Container fixed>
-        <Stack marginTop={5}>
+        <Stack marginTop={10}>
           <Box
             sx={{
               width: "full",

@@ -12,6 +12,8 @@ import {
   InputBase,
   IconButton,
   Switch,
+  Hidden,
+  Typography,
 } from "@mui/material";
 
 import { styled } from "@mui/material/styles";
@@ -46,17 +48,17 @@ function ElevationScroll(props) {
 }
 
 export default function NavigationBar(props) {
+  const route = useRouter();
   return (
     <>
-      <ElevationScroll {...props}>
-        <AppBar sx={{ backgroundColor: "#12486B" }}>
+      <HideOnScroll {...props}>
+        <AppBar sx={{ backgroundColor: "#12486B", boxShadow: "none" }}>
           <Container maxWidth="xl">
             <Toolbar disableGutters>
               <Stack
                 direction="row"
                 justifyContent="space-between"
                 alignItems="center"
-                spacing={0}
                 width={1}
               >
                 <Link
@@ -71,20 +73,105 @@ export default function NavigationBar(props) {
                 >
                   Rizky Saputra
                 </Link>
-                <NavigationLinks />
-                <Stack direction="row" alignItems="center">
-                  <SearchField />
-                  {/* <IOSSwitch sx={{ m: 1 }} /> */}
-                </Stack>
+                <Hidden only="xs">
+                  <NavigationLinks />
+                  <Stack direction="row" alignItems="center">
+                    <SearchField />
+                    {/* <IOSSwitch sx={{ m: 1 }} /> */}
+                  </Stack>
+                </Hidden>
               </Stack>
             </Toolbar>
           </Container>
+          {route.pathname.split("/")[1] === "blog" && <BlogCategory />}
         </AppBar>
-      </ElevationScroll>
+      </HideOnScroll>
       <Toolbar />
     </>
   );
 }
+
+const BlogCategory = () => {
+  return (
+    <Box position="relative" display="flex" py={1} backgroundColor="#419197">
+      <Container maxWidth="xl">
+        <Stack direction="row" alignItems="center" spacing={3}>
+          <Typography
+            sx={{
+              textDecoration: "none",
+              fontSize: 17,
+              fontWeight: 500,
+              color: "white",
+              fontFamily: "poppins",
+            }}
+          >
+            Categories :
+          </Typography>
+          <Link
+            sx={{
+              textDecoration: "none",
+              fontSize: 17,
+              fontWeight: 500,
+              color: "white",
+              fontFamily: "poppins",
+            }}
+            href="/"
+          >
+            Technology
+          </Link>
+          <Link
+            sx={{
+              textDecoration: "none",
+              fontSize: 17,
+              fontWeight: 500,
+              color: "white",
+              fontFamily: "poppins",
+            }}
+            href="/"
+          >
+            News
+          </Link>
+          <Link
+            sx={{
+              textDecoration: "none",
+              fontSize: 17,
+              fontWeight: 500,
+              color: "white",
+              fontFamily: "poppins",
+            }}
+            href="/"
+          >
+            Automotive
+          </Link>
+          <Link
+            sx={{
+              textDecoration: "none",
+              fontSize: 17,
+              fontWeight: 500,
+              color: "white",
+              fontFamily: "poppins",
+            }}
+            href="/"
+          >
+            Music
+          </Link>
+          <Link
+            sx={{
+              textDecoration: "none",
+              fontSize: 17,
+              fontWeight: 500,
+              color: "white",
+              fontFamily: "poppins",
+            }}
+            href="/"
+          >
+            Design
+          </Link>
+        </Stack>
+      </Container>
+    </Box>
+  );
+};
 
 const IOSSwitch = styled((props) => (
   <Switch focusVisibleClassName=".Mui-focusVisible" disableRipple {...props} />
