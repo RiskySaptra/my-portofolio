@@ -49,7 +49,7 @@ export default function NavigationBar(props) {
   return (
     <>
       <ElevationScroll {...props}>
-        <AppBar sx={{ backgroundColor: "white" }}>
+        <AppBar sx={{ backgroundColor: "#12486B" }}>
           <Container maxWidth="xl">
             <Toolbar disableGutters>
               <Stack
@@ -63,17 +63,18 @@ export default function NavigationBar(props) {
                   href="/blog"
                   sx={{
                     textDecoration: "none",
-                    fontSize: 20,
-                    color: "#4B6BFB",
+                    fontSize: 30,
+                    fontWeight: 600,
+                    color: "#F5FCCD",
                     fontFamily: "poppins",
                   }}
                 >
                   Rizky Saputra
                 </Link>
                 <NavigationLinks />
-                <Stack direction="row" spacing={5} alignItems="center">
+                <Stack direction="row" alignItems="center">
                   <SearchField />
-                  <IOSSwitch sx={{ m: 1 }} />
+                  {/* <IOSSwitch sx={{ m: 1 }} /> */}
                 </Stack>
               </Stack>
             </Toolbar>
@@ -99,7 +100,7 @@ const IOSSwitch = styled((props) => (
       transform: "translateX(16px)",
       color: "#fff",
       "& + .MuiSwitch-track": {
-        backgroundColor: theme.palette.mode === "dark" ? "#2ECA45" : "#4B6BFB",
+        backgroundColor: theme.palette.mode === "dark" ? "#2ECA45" : "#F5FCCD",
         opacity: 1,
         border: 0,
       },
@@ -128,7 +129,7 @@ const IOSSwitch = styled((props) => (
   },
   "& .MuiSwitch-track": {
     borderRadius: 26 / 2,
-    backgroundColor: theme.palette.mode === "light" ? "#E9E9EA" : "#39393D",
+    backgroundColor: theme.palette.mode === "light" ? "#419197" : "#39393D",
     opacity: 1,
     transition: theme.transitions.create(["background-color"], {
       duration: 500,
@@ -144,18 +145,18 @@ function SearchField() {
         p: "1px 2px",
         display: "flex",
         alignItems: "center",
-        width: 220,
-        height: "32px",
-        backgroundColor: "#F4F4F5",
+        width: 210,
+        height: "30px",
+        backgroundColor: "#419197",
         boxShadow: "none",
       }}
     >
       <InputBase
-        sx={{ ml: 1, flex: 1 }}
+        sx={{ ml: 1, flex: 1, color: "#F5FCCD", fontSize: 13 }}
         placeholder="Search"
         inputProps={{ "aria-label": "search google maps" }}
       />
-      <IconButton type="button" sx={{ p: "3px" }}>
+      <IconButton type="button" sx={{ p: "3px", color: "#F5FCCD" }}>
         <SearchIcon />
       </IconButton>
     </Paper>
@@ -163,7 +164,7 @@ function SearchField() {
 }
 
 const NavigationLinks = () => {
-  const { pathname } = useRouter();
+  const route = useRouter();
   const pages = [
     { page: "Portofolio", href: "/" },
     { page: "Blog", href: "/blog" },
@@ -172,10 +173,14 @@ const NavigationLinks = () => {
   ];
 
   return (
-    <Box display="flex" gap={5} paddingLeft={10}>
+    <Box display="flex" gap={5}>
       {pages.map((page) => (
         <Link
-          color={pathname === page.href ? "#4B6BFB" : "#3B3C4A"}
+          color={
+            `/${route.pathname.split("/")[1]}` === page.href
+              ? "#F5FCCD"
+              : "#78D6C6"
+          }
           key={page.page}
           href={page.href}
           underline="none"

@@ -1,9 +1,13 @@
 import Head from "next/head";
-import NavigationBar from "@components/navigation-bar";
-
-import { Container, Stack, Box } from "@mui/material";
+import { useRef } from "react";
+import { Stack, Box, Container, Typography, Button } from "@mui/material";
 
 export default function Home() {
+  const experienceRef = useRef(null);
+
+  const scrollInto = (ref) => {
+    ref.current?.scrollIntoView({ behavior: "smooth" });
+  };
   return (
     <>
       <Head>
@@ -13,9 +17,62 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Container fixed>
-        <Stack>Portofolio</Stack>
-      </Container>
+      <Stack
+        sx={{
+          width: "100vw",
+          height: "100vh",
+          position: "static",
+          background: "#12486B",
+          top: 0,
+        }}
+      >
+        <Container maxWidth="xl">
+          <Button onClick={() => scrollInto(experienceRef)}>scroll</Button>
+        </Container>
+      </Stack>
+      <Stack
+        sx={{
+          background: "#F6F6F7",
+        }}
+      >
+        <Container maxWidth="xl">
+          <Box
+            display="flex"
+            alignItems="center"
+            justifyContent="center"
+            marginY={2}
+          >
+            <Typography variant="h2" color="#181A2A">
+              Experience
+            </Typography>
+          </Box>
+        </Container>
+      </Stack>
+      <Box
+        ref={experienceRef}
+        sx={{
+          width: "100vw",
+          height: "100vh",
+          background: "#419197",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <Typography variant="h1">Tian Memeg</Typography>
+      </Box>
+      <Box
+        sx={{
+          width: "100vw",
+          height: "100vh",
+          background: "gray",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <Typography variant="h1">MEMEG</Typography>
+      </Box>
     </>
   );
 }

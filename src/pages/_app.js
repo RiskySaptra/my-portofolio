@@ -24,9 +24,8 @@ function Layout({ children }) {
   return (
     <>
       <NavigationBar />
-      <Container fixed>
-        <Stack marginTop={5}>{children}</Stack>
-      </Container>
+      <Stack>{children}</Stack>
+      {/* <Container fixed></Container> */}
       {/* <Footer /> */}
     </>
   );

@@ -1,5 +1,5 @@
 import Head from "next/head";
-import { Stack, Box, Container } from "@mui/material";
+import { Stack, Box } from "@mui/material";
 export default function Blog() {
   return (
     <>
@@ -9,18 +9,19 @@ export default function Blog() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Container fixed>
-        <Stack marginTop={5}>
-          <Box
-            sx={{
-              width: "full",
-              height: "35rem",
-              background: "gray",
-              borderRadius: "12px",
-            }}
-          ></Box>
-        </Stack>
-      </Container>
+
+      <Stack>
+        <Box
+          sx={{
+            width: "full",
+            height: "35rem",
+            background: "gray",
+            borderRadius: "12px",
+          }}
+        >
+          asjdgsahjdg
+        </Box>
+      </Stack>
     </>
   );
 }
