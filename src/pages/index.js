@@ -1,7 +1,6 @@
 import { useRef } from "react";
 import { Stack, Box, Container, Typography, Button } from "@mui/material";
 
-import * as React from "react";
 import { experimentalStyled as styled } from "@mui/material/styles";
 import Paper from "@mui/material/Paper";
 import Grid from "@mui/material/Unstable_Grid2";
@@ -47,13 +46,57 @@ export default function Home() {
   projectRef = useRef(null);
 
   return (
+    <Stack
+      sx={{
+        width: "100vw",
+        height: "100vh",
+        position: "fixed",
+        background: "#12486B",
+      }}
+    >
+      <Container
+        maxWidth="xl"
+        sx={{
+          display: "flex",
+          alignItems: "center",
+
+          height: "45rem",
+        }}
+        // sm={{ marginTop: "20rem" }}
+      >
+        <Stack width={1}>
+          <Box
+            sx={{
+              maxWidth: "35rem",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <Typography variant="h6" color="white">
+              {`Welcome! I'm a fullstack engineer with a passion for
+              crafting web solutions. Explore my work and let's build something
+              amazing together!`}
+            </Typography>
+          </Box>
+          {/* <ResponsiveGrid /> */}
+
+          {/* <Button onClick={() => scrollInto(experienceRef)}>scroll</Button> */}
+        </Stack>
+      </Container>
+    </Stack>
+  );
+}
+
+const Portofolio = () => {
+  return (
     <>
       <Stack
         sx={{
           width: "100vw",
           height: "100vh",
           position: "static",
-          background: "#12486B",
+          // background: "#12486B",
           top: 0,
         }}
       >
@@ -78,8 +121,8 @@ export default function Home() {
             >
               <Typography variant="h6" color="white">
                 {`Welcome! I'm a fullstack engineer with a passion for
-                crafting web solutions. Explore my work and let's build something
-                amazing together!`}
+              crafting web solutions. Explore my work and let's build something
+              amazing together!`}
               </Typography>
             </Box>
             {/* <ResponsiveGrid /> */}
@@ -125,13 +168,13 @@ export default function Home() {
         >
           <Typography variant="h6" color="white">
             {`I'm a passionate and experienced fullstack engineer dedicated to
-                creating innovative web solutions. With a strong foundation in both
-                front-end and back-end development, I thrive on turning ideas into
-                functional and user-friendly web applications. Through this portfolio,
-                you'll get a glimpse into my diverse skill set, past projects, and the
-                creative problem-solving that drives my work. Explore my work, and
-                feel free to reach out if you're interested in collaborating on your
-                next digital venture!`}
+              creating innovative web solutions. With a strong foundation in both
+              front-end and back-end development, I thrive on turning ideas into
+              functional and user-friendly web applications. Through this portfolio,
+              you'll get a glimpse into my diverse skill set, past projects, and the
+              creative problem-solving that drives my work. Explore my work, and
+              feel free to reach out if you're interested in collaborating on your
+              next digital venture!`}
           </Typography>
         </Container>
       </Box>
@@ -199,4 +242,4 @@ export default function Home() {
       </Box>
     </>
   );
-}
+};

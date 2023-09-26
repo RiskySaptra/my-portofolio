@@ -1,9 +1,12 @@
 import Head from "next/head";
-import { createTheme, ThemeProvider } from "@mui/material/styles";
 import NavigationBar from "@components/navigation-bar";
 
+import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { Stack } from "@mui/material";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import "../styles/globals.css";
-import { Container, Stack } from "@mui/material";
+
+const queryClient = new QueryClient();
 
 const theme = createTheme({
   typography: {
@@ -13,11 +16,13 @@ const theme = createTheme({
 
 export default function App({ Component, pageProps }) {
   return (
-    <ThemeProvider theme={theme}>
-      <Layout>
-        <Component {...pageProps} />
-      </Layout>
-    </ThemeProvider>
+    <QueryClientProvider client={queryClient}>
+      <ThemeProvider theme={theme}>
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
+      </ThemeProvider>
+    </QueryClientProvider>
   );
 }
 
@@ -32,7 +37,6 @@ function Layout({ children }) {
       </Head>
       <NavigationBar />
       <Stack>{children}</Stack>
-      {/* <Container fixed></Container> */}
       {/* <Footer /> */}
     </>
   );
